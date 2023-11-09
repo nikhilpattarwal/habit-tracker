@@ -1,58 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useState,useEffect } from 'react';
 import './App.css';
+import { Home } from './components/home/home';
+import { NavBar } from './components/navBar/navBar';
+import { Habit } from './components/habit/habit';
+import { Completed } from './components/completed/completed';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {ErrorElement} from './components/errorElement/errorElement';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { db } from './firebase_setup/firebase';
+import { useDispatch } from 'react-redux';
+import { habitAction } from './redux/reducers/homeTaskReducer';
+
 
 function App() {
+  const [isForm, setIsForm] = useState(false);
+  const [showAddBtn, setShowAddBtn] = useState(true);
+  const dispatch = useDispatch();
+   
+  //getting data from firestore
+  const getHabitData = () => {
+    const unsub = onSnapshot(
+      query(collection(db, "habit"), orderBy("id", "desc")),
+      (snapshot) => {
+        const habit = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        dispatch(habitAction.GET_DATA(habit));
+      }
+    );
+  }
+  
+  useEffect(() => {
+    getHabitData(); 
+  },[]);
+  
+  const router = createBrowserRouter([
+    {path:"/", element:<NavBar setIsForm={{setIsForm,showAddBtn}}/>, errorElement:<ErrorElement/>, children:[
+      {index:true, element:<Home form={{isForm,setIsForm,setShowAddBtn}} />},
+      {path:"/habit/:id", element:<Habit setShowAddBtn={setShowAddBtn} />},
+      {path:"/completed", element:<Completed setShowAddBtn={setShowAddBtn}/>}
+    ]},
+  ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+   <>
+    <RouterProvider router={router} />
+   </>
+  )
 }
 
 export default App;

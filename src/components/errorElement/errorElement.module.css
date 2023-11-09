@@ -1,0 +1,30 @@
+.errorIcon{
+    font-size: 3rem;
+}
+
+.errorContainerStyle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #f7f7f7;
+  }
+  
+  .errorIconStyle  {
+    margin-right: 20px;
+  }
+  
+  .errorTextContainerStyle  {
+    text-align: center;
+  };
+  
+  .errorTitleStyle {
+    font-size: 24px;
+    color: #ff6347
+  };
+  
+  .errorMessageStyle {
+    font-size: 18px
+  };
+  
+ 

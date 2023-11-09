@@ -1,0 +1,266 @@
+*{
+margin: 0;
+padding: 0;
+}
+
+.itemsContainer{
+    display: flex;
+    padding: 0.5rem;
+    /* gap: 2.5rem; */
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.item{
+    margin: 0 0.8rem 0.8rem 1rem;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: aqua;
+    flex-direction: column;
+    width: 16rem;
+    padding: 1.5rem;
+}
+
+
+.checkHeading{
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.inputHeading{
+    width: 10rem;
+    overflow: hidden;
+}
+
+.checkHeading h3{
+    padding-bottom: .3rem;
+    cursor: pointer;
+}
+
+input{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.item h5{
+    cursor: pointer;
+}
+
+
+
+.delIcon{
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.formCont{
+    position: absolute;
+    left:50%;
+    transform: translatex(-50%);
+    top:2%;
+    height: fit-content;
+    background-color: rgb(184, 179, 179);
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap:.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.form input{
+    width:20rem;
+    border: none;
+}
+
+.form button{
+    width: 10rem;
+}
+
+.lastUpdated{
+    font-size: .9rem;
+}
+
+
+.button {
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.button:hover,
+.button:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+.emojiIcon{
+    font-size: 40vh;
+}
+
+.iconHead{
+    display: flex;
+    align-items: center;
+    padding: 0 1vw 0 0;
+    flex-wrap: nowrap;
+    cursor: pointer;
+   }
+
+.iconSize{
+font-size: 6vh;
+}
+
+.emojiText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 70vh;
+    flex-direction: column;
+    gap: 1rem;
+    color: gold;
+}
+
+@media (max-width: 660px) {
+    .item{
+        border-radius: .5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        background-color: aqua;
+        flex-direction: column;
+        width: 12.5rem;
+        padding: 1rem;
+    }
+
+    .checkHeading{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .inputHeading{
+        width: 10rem;
+        font-size: 1rem;
+        overflow: hidden;
+    }
+
+    .item h1{
+        font-size:1rem;
+    }
+
+    .item p{
+        font-size: .7rem;
+    }
+
+    .formCont{
+        position: absolute;
+        left:50%;
+        transform: translatex(-50%);
+        top:2%;
+        height: fit-content;
+        background-color: rgb(184, 179, 179);
+        padding: 1rem;
+        border-radius: .5rem;
+    }
+
+    .form{
+        display: flex;
+        flex-direction: column;
+        gap:.5rem;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .form input{
+        width:10rem;
+        border: none;
+    }
+    
+    .form button{
+        width: 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .itemsContainer{
+        display: flex;
+        padding: 0.5rem;
+        /* gap: 2.5rem; */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .item{
+        border-radius: .5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        background-color: aqua;
+        flex-direction: column;
+        width: 12.5rem;
+        padding: 1rem;
+    }
+
+    .checkHeading{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .inputHeading{
+        width: 10rem;
+        font-size: 1rem;
+        overflow: hidden;
+    }
+
+    .item h1{
+        font-size:1rem;
+    }
+
+    .item p{
+        font-size: .7rem;
+    }
+}
